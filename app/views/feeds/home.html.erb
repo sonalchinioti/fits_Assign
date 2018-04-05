@@ -1,0 +1,26 @@
+<div class="container-fluid" style="position:relative;" >
+        <div class="row">
+          <img class="img-responsive"   src="/sample_23.jpeg" />
+        </div> 
+        <% if current_user.role.eql?"user" %>       
+        <div class="row">
+          <div class="col-md-12 col-sm-12" style="position:absolute; color:#fff; top:30%; ">
+                <h2 style="text-align:center;">Hey User, </br> Ready to get  suggestions.</h2>
+          </div>
+        </div>
+        <% else %>
+	        <div class="row">
+	          <div class="col-md-12 col-sm-12" style="position:absolute; color:#fff; top:30%; ">
+	                <h2 style="text-align:center;">Hey Trainer , Ready to Chat with your clients</h2>
+	          </div>
+	        </div>
+        <% end %>
+        <div class="row">
+          <div class="buttonNew" style="width:100px;  margin:-100px auto;">
+            <div class="form-group">
+                <%= link_to "Chats", messages_path, :class => "btn btn-primary" %>
+              </div>
+            </div>
+        </div>
+    
+  </div>

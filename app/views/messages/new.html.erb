@@ -1,0 +1,115 @@
+<div class="container-fluid inner-padding">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="box">
+          <div class="box-header">
+            <div class="headline">
+              <h4> Send New Message</h4>
+            </div>
+            <div class="box-tools">
+              <div class="input-group input-group-sm">
+                <div class="input-group-btn">
+                  <%= link_to "Back to Messgaes", messages_path, :class => "btn btn-primary create-new hvr-box-shadow-outset" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="box-body">
+            <%= form_for(@message, :url => messages_path, :html => { :method => "post", validate: true, :multipart => true, :class => "form-horizontal" , :id => "message_form" }) do |f| %>
+
+
+            <div class="form-group">
+                   <label for="type" class="col-sm-3 col-xs-12 ">Type of Reciever</label>
+                    <div class="col-sm-9 col-xs-12 padding-0">                   
+                     
+                     <label for="chkYes">
+                      <input type="radio" id="chk_user" name="chk_is_user_or_trainer" checked="checked" >
+                      User
+                     </label>
+                     <label for="chk_trainer">
+                      <input type="radio" id="chk_trainer" name="chk_is_user_or_trainer" />
+                      Trainer
+                     </label>   
+                    </div>
+                  </div>
+
+              <div class="row" id="trainer" style= "display: none" >
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <div class="col-lg-12 col-xs-12">
+                      <label>Reciever's Trainer</label>
+                      <%= f.collection_select :recipient_id, User.where(:role => "trainer").all, :id, :email, {}, {:class => "form-control"} %>                   
+                   </div>
+                  </div>
+                </div>
+              </div>
+
+            
+               <div class="row" id="user" >
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <div class="col-lg-12 col-xs-12">
+                      <label>Reciever's User</label>
+                      <%= f.collection_select :recipient_id, User.where(:role => "user").all, :id, :email, {}, {:class => "form-control"} %>                   
+                   </div>
+                  </div>
+                </div>
+              </div>
+
+             
+            
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <div class="col-lg-12 col-xs-12">
+                      <label>Message</label>
+                      <%= f.text_area :body, :class => "form-control", :placeholder => "", required: true %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <div class=" col-sm-10">
+                  <button type="submit" class="btn btn-danger admin-login-btn hvr-box-shadow-outset">Submit</button>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("input[name='chk_is_user_or_trainer']").click(function () {
+            if ($("#chk_trainer").is(":checked")) {
+                 $('#user').hide(500,function(){
+                    $(this).addClass('toBeRemoved');
+                   });
+                 $('#trainer').show(500,function(){
+                     $(this).removeClass('toBeRemoved');
+                  });          
+            } else {
+              $('#trainer').hide(500,function(){
+                    $(this).addClass('toBeRemoved');
+                   });
+                 $('#user').show(500,function(){
+                     $(this).removeClass('toBeRemoved');
+                  });    
+               
+            }
+        });
+    });
+
+  
+
+    $('#message_form').submit(function(){
+       $('.toBeRemoved').remove();
+     });
+</script>

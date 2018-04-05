@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FitsAssign</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+<!--     taken from my previous projects 
+ -->    
+    <%= stylesheet_link_tag 'https://d129flpgfyol5n.cloudfront.net/stylesheets/hover.css' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' %>
+
+
+ 
+    <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js' %>
+	  <%= javascript_include_tag 'https://d129flpgfyol5n.cloudfront.net/javascripts/toastr.js' %>
+    <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' %>
+    <%= javascript_include_tag 'https://d129flpgfyol5n.cloudfront.net/javascripts/jquery.tmpl.min.js' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>

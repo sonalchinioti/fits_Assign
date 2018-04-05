@@ -1,0 +1,51 @@
+
+<div class="container-fluid inner-padding">
+  <div class="animated fadeIn">
+    <div class="col-xs-12">
+      <div class="box">
+        <div class="box-header">
+          <div class="headline">
+            <h4> Message Details </h4>
+          </div>
+          <div class="box-tools">
+            <div class="input-group input-group-sm">
+              <div class="input-group-btn">
+                <%= link_to "Back to Messgaes", messages_path, :class => "btn btn-primary create-new hvr-box-shadow-outset" %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="full-width margin-bottom-15">
+            <div class="headline h-margin">
+              <h4> Sender Email</h4>
+            </div>
+            <p><%= User.find(@message.sender_id).email %></p>
+          </div>
+          <div class="box-body">
+          <div class="full-width margin-bottom-15">
+            <div class="headline h-margin">
+              <h4> Reciepnt Email</h4>
+            </div>
+            <p><%= User.find(@message.recipient_id).email %></p>
+          </div>
+
+          <div class="box-body">
+          <div class="full-width margin-bottom-15">
+            <div class="headline h-margin">
+              <h4> Reciepnt Role</h4>
+            </div>
+            <p><%= User.find(@message.recipient_id).role %></p>
+          </div>
+
+          <div class="full-width margin-bottom-15">
+            <div class="headline h-margin">
+              <h4> Message </h4>
+            </div>
+            <p><%= @message.body %></p>
+          </div>
+          
+      </div>
+    </div>
+  </div>
+</div>
